@@ -1,0 +1,21 @@
+services:
+  webapp:
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile.dev
+    container_name: webapp
+    volumes:
+      - ./webapp:/webapp
+      - /node_modules/node_modules
+    ports:
+      - 3000:3000
+
+  auth_api:
+    build:
+      context: ./auth_api
+      dockerfile: Dockerfile.dev
+    container_name: auth_api
+    volumes:
+      - ./auth_api:/auth_api
+    ports:
+      - 3001:3001
