@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [ :create ]
       post "login", to: "auth#login"
+      get "me", to: "users#show"
+      put "me", to: "users#update"
     end
   end
 end
