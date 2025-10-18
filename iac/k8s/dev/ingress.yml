@@ -7,13 +7,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: auth_api.local
+    - host: auth-api.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: auth_api
+                name: auth-api
                 port:
                   number: 80
