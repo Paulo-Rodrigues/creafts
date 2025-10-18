@@ -31,6 +31,21 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def change_password
+    return render json: { errors: ["Current password can't be blank"] }, status: :unprocessable_entity unless params[:current_password].present?
+    return render json: { errors: ["Password can't be blank"] }, status: :unprocessable_entity unless params[:new_password].present?
+
+    unless @current_user.authenticate(params[:current_password])
+      return render json: { errors: ["Current password is incorrect"] }, status: :unprocessable_entity
+    end
+
+    if @current_user.update(password: params[:new_password], password_confirmation: params[:new_password_confirmation])
+      render json: { message: "Password changed successfully" }, status: :ok
+    else
+      render json: { errors: @current_user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def user_params

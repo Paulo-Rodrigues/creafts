@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post "login", to: "auth#login"
       get "me", to: "users#show"
       put "me", to: "users#update"
+      put "change_password", to: "users#change_password"
     end
   end
 end
