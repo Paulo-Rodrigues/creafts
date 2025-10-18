@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dev-entry
+  namespace: crafts-dev
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: auth_api.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: auth_api
+                port:
+                  number: 80
