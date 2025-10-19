@@ -15,5 +15,6 @@ RSpec.describe Product, type: :model do
   context "associations" do
     it { is_expected.to belong_to(:category) }
     it { is_expected.to have_many_attached(:images) }
+    it { is_expected.to have_many(:price).dependent(:destroy) }
   end
 end
