@@ -19,3 +19,13 @@ services:
       - ./auth_api:/auth_api
     ports:
       - 3001:3001
+
+  products_api:
+    build:
+      context: ./products_api
+      dockerfile: Dockerfile.dev
+    container_name: products_api
+    volumes:
+      - ./products_api:/products_api
+    ports:
+      - 3002:3002
