@@ -11,4 +11,8 @@ RSpec.describe Category, type: :model do
       expect(category.status).to eq("active")
     end
   end
+
+  context "associations" do
+    it { is_expected.to have_many(:products) }
+  end
 end
