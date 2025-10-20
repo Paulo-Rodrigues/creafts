@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   context "validations" do
+    it { is_expected.to validate_presence_of(:user_external_id) }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to define_enum_for(:status).with_values(unavailable: 0, available: 1) }
 

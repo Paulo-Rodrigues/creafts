@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   has_many :price, dependent: :destroy
   has_many_attached :images
 
-  validates :name, presence: true
+  validates :name, :user_external_id, presence: true
 
   enum :status, { unavailable: 0, available: 1 }, default: :available
 end
